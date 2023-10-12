@@ -63,6 +63,9 @@ namespace Mosaic.Base.Pages
 		[Button]
 		private void RecordBeforeTransitionIn() 
 		{
+			UnityEditor.Undo.RecordObject(this, "RecordBeforeTransitionIn");
+			UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this.gameObject);
+
 			beforeTransitionIn.position = transform.localPosition;
 			beforeTransitionIn.rotation = transform.localRotation.eulerAngles;
 			beforeTransitionIn.scale = transform.localScale;
@@ -74,11 +77,16 @@ namespace Mosaic.Base.Pages
 		[Button]
 		private void RecordBeforeTransitionOut()
 		{
+			UnityEditor.Undo.RecordObject(this, "RecordBeforeTransitionOut");
+			UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(this.gameObject);
+
+
 			beforeTransitionOut.position = transform.localPosition;
 			beforeTransitionOut.rotation = transform.localRotation.eulerAngles;
 			beforeTransitionOut.scale = transform.localScale;
 			image = GetComponent<Image>();
 			if (image) beforeTransitionOut.color = image.color;
+
 			UnityEditor.EditorUtility.SetDirty(this.gameObject);
 		}
 	}
