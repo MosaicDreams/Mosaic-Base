@@ -68,6 +68,7 @@ namespace Mosaic.Base.Pages
 			beforeTransitionIn.scale = transform.localScale;
 			image = GetComponent<Image>();
 			if (image) beforeTransitionIn.color = image.color;
+			UnityEditor.EditorUtility.SetDirty(this.gameObject);
 		}
 
 		[Button]
@@ -78,6 +79,7 @@ namespace Mosaic.Base.Pages
 			beforeTransitionOut.scale = transform.localScale;
 			image = GetComponent<Image>();
 			if (image) beforeTransitionOut.color = image.color;
+			UnityEditor.EditorUtility.SetDirty(this.gameObject);
 		}
 	}
 }
