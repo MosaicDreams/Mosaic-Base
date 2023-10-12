@@ -13,8 +13,11 @@ namespace Mosaic.Base.Waiter
             get
             {
                 if (instance == null)
-                    instance = new GameObject("Extensions: Waiter").AddComponent<Waiter>();
-                return instance;
+                {
+					instance = new GameObject("Waiter: Instance").AddComponent<Waiter>();
+                    DontDestroyOnLoad(instance.gameObject);
+				}
+				return instance;
             }
         }
 
@@ -45,5 +48,15 @@ namespace Mosaic.Base.Waiter
             foreach(Coroutine c in list)
                 Instance.StopCoroutine(c);
         }
+
+        public static Waiter GetUniqueInstance(string name, bool dontDestroyOnLoad = true)
+        {
+            Waiter waiter = new GameObject($"Waiter: {name}").AddComponent<Waiter>();
+
+            if (dontDestroyOnLoad)
+                DontDestroyOnLoad(waiter.gameObject);
+
+            return waiter;
+		}
     }
 }
