@@ -8,12 +8,12 @@ namespace Mosaic.Base.Extensions
 	{
 		public static Coroutine SetActive(this GameObject gameObject, bool state, float seconds)
 		{
-			return Waiter.Waiter.Wait(seconds, () => { if (gameObject != null) gameObject.SetActive(state); });
+			return Waiter.Waiter.InstanceWait(seconds, () => { if (gameObject != null) gameObject.SetActive(state); });
 		}
 
 		public static Coroutine Destroy(this GameObject gameObject, float seconds)
 		{
-			return Waiter.Waiter.Wait(seconds, () => { if (gameObject != null) GameObject.Destroy(gameObject); });
+			return Waiter.Waiter.InstanceWait(seconds, () => { if (gameObject != null) GameObject.Destroy(gameObject); });
 		}
 	}
 }

@@ -38,7 +38,12 @@ namespace Mosaic.Base.Waiter
             callback?.Invoke();
         }
 
-        public static Coroutine Wait(float seconds, System.Action callback)
+		public Coroutine Wait(float seconds, System.Action callback)
+		{
+			return StartCoroutine(WaitRoutine(seconds, callback));
+		}
+
+		public static Coroutine InstanceWait(float seconds, System.Action callback)
         {
             return Instance.StartCoroutine(Instance.WaitRoutine(seconds, callback));
         }
