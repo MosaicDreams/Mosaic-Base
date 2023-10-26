@@ -14,7 +14,7 @@ In the production process of Mosaic Toolset, we needed to have some functionalit
 ## Table of Contents
 
 - Editor Tools
-- Enum Generation
+- [Enum Generation](#2-enum-generation)
 - [Extentions](#3-extenitons)
 - Pages
   - Page Parent
@@ -22,6 +22,48 @@ In the production process of Mosaic Toolset, we needed to have some functionalit
 - [Pairs](#5-pairs)
 - Tween Actions
 - [Waiter](#7-waiter)
+
+---
+
+## 2. [Enum Generation](#table-of-contents)
+
+### Description
+
+**EnumGenerator** is an effective tool for generating **C#** enum scripts automatically. It generates a valid **C#** enum script based on a list of input names, an enum name, and the name of the script file. For developers who need to generate enum types fast and efficiently may find this tool particularly useful.
+
+### Syntax
+
+If you want to generate enums, first you have to include it :
+
+```C#
+using Mosaic.Base.EnumGeneration;
+```
+
+### Methods
+
+There is only one method that you can use and it will do all the things for you.
+
+1. **GenerateEnumScript Method :**
+
+    - `GenerateEnumScript(IEnumerable<string> names, string enumName, string scriptFileName)` : This method generates a C# enum script based on the provided input.
+
+    - Parameters:
+
+        - `names` : An enumerable collection of string names to be used as enum members.
+
+        - `enumName` : A string specifying the name of the generated enum.
+
+        - `scriptFileName` : A string indicating the name of the script file where the generated enum code will be saved.
+
+    - The method writes the C# code for the enum to the specified script file, ensuring that it adheres to C# naming conventions.
+
+    - It handles potential naming conflicts by creating unique enum member names based on the input names.
+
+```C#
+// Generate an enum script based on a list of names
+IEnumerable<string> enumNames = new List<string> { "Red", "Green", "Blue" };
+EnumGenerator.GenerateEnumScript(enumNames, "Color", "ColorEnum.cs");
+```
 
 ---
 
