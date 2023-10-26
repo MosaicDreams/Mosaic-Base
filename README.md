@@ -80,8 +80,6 @@ myGameObject.Destroy(3.0f);
 
 We might want to hold two different sorts in one container. So we made a Pair class to do this for us. A reliable and flexible way to manage pairs of values in **C#** is to use the **Pair<TFirst, TSecond>** class. You're able to efficiently store, change, and compare two potentially different data types within a single wrapped entity with the help of this class. It is a handy tool, especially when dealing with pairs of values within your applications.
 
----
-
 ### Syntax
 
 So when we want to use this class we will define it first via :
@@ -98,8 +96,6 @@ int firstValue = pair.First;      // Retrieves the first element (42)
 string secondValue = pair.Second; // Retrieves the second element ("Hello")
 
 ```
-
----
 
 ### Methods
 
