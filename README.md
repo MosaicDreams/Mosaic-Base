@@ -59,11 +59,11 @@ There is only one method that you can use and it will do all the things for you.
 
     - It handles potential naming conflicts by creating unique enum member names based on the input names.
 
-```C#
-// Generate an enum script based on a list of names
-IEnumerable<string> enumNames = new List<string> { "Red", "Green", "Blue" };
-EnumGenerator.GenerateEnumScript(enumNames, "Color", "ColorEnum.cs");
-```
+    ```C#
+    // Generate an enum script based on a list of names
+    IEnumerable<string> enumNames = new List<string> { "Red", "Green", "Blue" };
+    EnumGenerator.GenerateEnumScript(enumNames, "Color", "ColorEnum.cs");
+    ```
 
 ---
 
@@ -94,10 +94,10 @@ using Mosaic.Base.Extensions;
 
         - `seconds` : The number of seconds to wait before applying the activity state change.
 
-```C#
-// Set a GameObject as inactive after a 2-second delay
-myGameObject.SetActive(false, 2.0f);
-```
+    ```C#
+    // Set a GameObject as inactive after a 2-second delay
+    myGameObject.SetActive(false, 2.0f);
+    ```
 
 2. **Destroy Method :**
 
@@ -109,10 +109,10 @@ myGameObject.SetActive(false, 2.0f);
 
         - `seconds` : The number of seconds to wait before destroying the GameObject.
 
-```C#
-// Destroy a GameObject after a 3-second delay
-myGameObject.Destroy(3.0f);
-```
+    ```C#
+    // Destroy a GameObject after a 3-second delay
+    myGameObject.Destroy(3.0f);
+    ```
 
 ---
 
@@ -226,11 +226,11 @@ In Waiter you should know three important things.
 
         - `dontDestroyOnLoad(optional, default is true)` : A boolean flag that determines whether the unique instance should persist across scene changes. If set to true, the instance remains active during scene transitions.
 
-```C#
-// Create a custom Waiter instance and make it persistent across scene changes
-Waiter customWaiter = Waiter.GetUniqueInstance("CustomWaiter", true);
-customWaiter.Wait(3.5f, () => { Debug.Log("Custom Waiter: Waited for 3.5 seconds!"); });
-```
+    ```C#
+    // Create a custom Waiter instance and make it persistent across scene changes
+    Waiter customWaiter = Waiter.GetUniqueInstance("CustomWaiter", true);
+    customWaiter.Wait(3.5f, () => { Debug.Log("Custom Waiter: Waited for 3.5 seconds!"); });
+    ```
 
 2. **Wait Method :**
 
@@ -242,10 +242,10 @@ customWaiter.Wait(3.5f, () => { Debug.Log("Custom Waiter: Waited for 3.5 seconds
 
         - `callback` : The action to be executed after the specified waiting period.
 
-```C#
-// Basic waiting using the Wait method
-Waiter.Instance.Wait(2.0f, () => { Debug.Log("Waited for 2 seconds!"); });
-```
+    ```C#
+    // Basic waiting using the Wait method
+    Waiter.Instance.Wait(2.0f, () => { Debug.Log("Waited for 2 seconds!"); });
+    ```
 
 3. **InstanceWait Method :**
 
@@ -257,7 +257,7 @@ Waiter.Instance.Wait(2.0f, () => { Debug.Log("Waited for 2 seconds!"); });
 
         - `callback` : The action to be executed after the specified waiting period.
 
-```C#
-// Use the Singleton instance to start a waiting coroutine
-Waiter.InstanceWait(2.5f, () => { Debug.Log("Using Singleton instance: Waited for 2.5 seconds!"); });
-```
+    ```C#
+    // Use the Singleton instance to start a waiting coroutine
+    Waiter.InstanceWait(2.5f, () => { Debug.Log("Using Singleton instance: Waited for 2.5 seconds!"); });
+    ```
