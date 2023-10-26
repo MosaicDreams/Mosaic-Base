@@ -19,13 +19,13 @@ In the production process of Mosaic Toolset, we needed to have some functionalit
 - Pages
   - Page Parent
   - Page Element
-- [Pairs](#7-pairs)
+- [Pairs](#5-pairs)
 - Tween Actions
-- Waiter
+- [Waiter](#7-waiter)
 
 ---
 
-## 7. [Pairs](#table-of-contents)
+## 5. [Pairs](#table-of-contents)
 
 ### Description
 
@@ -99,3 +99,78 @@ We designed some methods to simply *store, manipulate, and compare* the two valu
     - The HasNull method determines if at least one of the elements within the Pair object is null. It returns true if either the first or second element is null.
 
 ---
+
+## 7. [Waiter](#table-of-contents)
+
+### Description
+
+The Waiter class is a versatile utility tailored for utilization within the Unity game engine. It greatly streamlines the orchestration of time-sensitive operations, including timed delays and delayed actions. An important feature of this class is its adherence to the Singleton pattern, ensuring that a sole instance exists within the application, rendering it an indispensable and structured asset for a diverse range of game development scenarios.
+
+### Syntax 
+
+When we want to use this class in unity, we need to include that in our code :
+
+```C#
+using Mosaic.Base.Waiter
+```
+
+Then we can work with it. We provided a simple example but we will explain them in detail.
+
+```C#
+// Basic waiting using the Wait method
+Waiter.Instance.Wait(2.0f, () => { Debug.Log("Waited for 2 seconds!"); });
+
+// Creating a unique Waiter instance and waiting with it
+Waiter customWaiter = Waiter.GetUniqueInstance("CustomWaiter", true);
+customWaiter.Wait(3.5f, () => { Debug.Log("Custom Waiter: Waited for 3.5 seconds!"); });
+```
+
+### Methods
+
+In Waiter you should know three important things.
+
+1. **GetUniqueInstance Method :**
+
+    - `GetUniqueInstance(string name, bool dontDestroyOnLoad = true)` : This method allows you to create a unique instance of the Waiter class with a specified name.
+
+    - Parameters:
+
+        - `name` : A string that defines the name of the unique Waiter instance.
+
+        - `dontDestroyOnLoad(optional, default is true)` : A boolean flag that determines whether the unique instance should persist across scene changes. If set to true, the instance remains active during scene transitions.
+
+```C#
+// Create a custom Waiter instance and make it persistent across scene changes
+Waiter customWaiter = Waiter.GetUniqueInstance("CustomWaiter", true);
+customWaiter.Wait(3.5f, () => { Debug.Log("Custom Waiter: Waited for 3.5 seconds!"); });
+```
+
+2. **Wait Method :**
+
+    - `Wait(float seconds, System.Action callback)` : This method starts a coroutine that waits for a specified duration in seconds and then invokes the provided callback function.
+
+    - Parameters:
+
+        - `seconds` : The duration in seconds to wait before executing the callback.
+
+        - `callback` : The action to be executed after the specified waiting period.
+
+```C#
+// Basic waiting using the Wait method
+Waiter.Instance.Wait(2.0f, () => { Debug.Log("Waited for 2 seconds!"); });
+```
+
+3. **InstanceWait Method :**
+
+    - `InstanceWait(float seconds, System.Action callback)` : A static method that uses the Singleton instance of the Waiter class to initiate a waiting coroutine.
+
+    - Parameters:
+
+        - `seconds` : The duration in seconds to wait before executing the callback.
+
+        - `callback` : The action to be executed after the specified waiting period.
+
+```C#
+// Use the Singleton instance to start a waiting coroutine
+Waiter.InstanceWait(2.5f, () => { Debug.Log("Using Singleton instance: Waited for 2.5 seconds!"); });
+```
