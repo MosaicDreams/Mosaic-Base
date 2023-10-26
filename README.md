@@ -15,7 +15,7 @@ In the production process of Mosaic Toolset, we needed to have some functionalit
 
 - Editor Tools
 - Enum Generation
-- Extentions
+- [Extentions](#3-extenitons)
 - Pages
   - Page Parent
   - Page Element
@@ -25,11 +25,60 @@ In the production process of Mosaic Toolset, we needed to have some functionalit
 
 ---
 
+## 3. [Extenitons](#table-of-contents)
+
+### Description
+
+The **GameObjectExtensions** class extends Unity's **GameObject**. It gives you two cool abilities: timing when things happen and making things vanish. When you require exact control over what's visible and how long it stays visible in your Unity game, these features are really valuable.
+
+### Syntax
+
+In order to use this extension, you have to include it first :
+
+```C#
+using Mosaic.Base.Extensions;
+```
+
+### Methods
+
+1. **SetActive Method :**
+
+    - `SetActive(this GameObject gameObject, bool state, float seconds)` : This extension method allows you to change the activity state (active or inactive) of a GameObject after a specified time delay.
+
+    - Parameters:
+        - `gameObject` : The target GameObject instance on which this method is called.
+
+        - `state` : A boolean value that determines whether the GameObject should be set as active (true) or inactive (false).
+
+        - `seconds` : The number of seconds to wait before applying the activity state change.
+
+```C#
+// Set a GameObject as inactive after a 2-second delay
+myGameObject.SetActive(false, 2.0f);
+```
+
+2. **Destroy Method :**
+
+    - `Destroy(this GameObject gameObject, float seconds)` : This extension method is designed to destroy a GameObject after a specified time delay.
+
+    - Parameters:
+
+        - `gameObject` : The target GameObject instance on which this method is called.
+
+        - `seconds` : The number of seconds to wait before destroying the GameObject.
+
+```C#
+// Destroy a GameObject after a 3-second delay
+myGameObject.Destroy(3.0f);
+```
+
+---
+
 ## 5. [Pairs](#table-of-contents)
 
 ### Description
 
-Sometimes we want to hold two different types in one. So we created a Pair class to do this for us. The **Pair<TFirst, TSecond>** class offers a robust and adaptable solution for managing pairs of values in **C#**. This class enables you to efficiently store, manipulate, and compare two potentially distinct data types within a single encapsulated entity. It is an invaluable tool, especially when your programming tasks involve handling pairs of values within your applications.
+We might want to hold two different sorts in one container. So we made a Pair class to do this for us. A reliable and flexible way to manage pairs of values in **C#** is to use the **Pair<TFirst, TSecond>** class. You're able to efficiently store, change, and compare two potentially different data types within a single wrapped entity with the help of this class. It is a handy tool, especially when dealing with pairs of values within your applications.
 
 ---
 
@@ -104,7 +153,7 @@ We designed some methods to simply *store, manipulate, and compare* the two valu
 
 ### Description
 
-The Waiter class is a versatile utility tailored for utilization within the Unity game engine. It greatly streamlines the orchestration of time-sensitive operations, including timed delays and delayed actions. An important feature of this class is its adherence to the Singleton pattern, ensuring that a sole instance exists within the application, rendering it an indispensable and structured asset for a diverse range of game development scenarios.
+The **Waiter** class is a multipurpose utility designed for use in the Unity game engine. It significantly simplifies the scheduling of time-sensitive tasks such as timed delays and delayed actions. One of this class's important features is that it uses the Singleton pattern, that guarantees there's just one instance in the code. This makes the class a structured and essential tool for a wide range of game development scenarios.
 
 ### Syntax 
 
